@@ -4,23 +4,22 @@ import cv2
 square =np.zeros((8, 8), dtype=np.uint8)
 
 def makeCol(end1, end2):
-    min_num = min(end1, end2)
-    max_num = max(end1, end2)
-    gap = max_num - min_num
-    interval = gap / 7
+    
+    # gap = abs(end1-end2)
     array = []
     for i in range(8):
-        array.append(int(min_num + (interval * i)))
+        value = int((end1 * i/7) + (end2 * i/7)) 
+        print(value)
+        array.append(value)
 
     return array
 
 def makeRow(end1, end2, row):
-    min_num = min(end1, end2)
-    max_num = max(end1, end2)
-    gap = max_num - min_num
-    interval = gap / 7
+    gap = abs(end1-end2)
     for i in range(8):
-        square[row][i] = int(min_num + (interval * i))
+        value = int((end1 * i/7) + (end2 * i/7)) 
+        square[row][i] = value
+        # square[row][i] = 255
 
 nw = 111
 ne = 186
@@ -32,6 +31,7 @@ right = makeCol(ne, se)
 
 for i in range(8):
     makeRow(left[i], right[i], i)
+
 
 cv2.namedWindow("Gradient",cv2.WINDOW_NORMAL)
 cv2.resizeWindow("Gradient",600,600)
