@@ -33,6 +33,7 @@ right = makeCol(ne, se)
 for i in range(8):
     makeRow(left[i], right[i], i)
 
-cv2.imshow("Gradient", square)
+cv2.namedWindow("Gradient",cv2.WINDOW_NORMAL)
 cv2.resizeWindow("Gradient",600,600)
+cv2.imshow("Gradient",square)
 cv2.waitKey()
