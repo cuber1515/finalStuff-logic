@@ -1,8 +1,6 @@
 import numpy as np
 import cv2
-import scipy
 
-print(scipy.__version__)
 from scipy.special import comb
 
 square =np.zeros((8, 8), dtype=np.uint8)
@@ -26,12 +24,6 @@ def makeCol(end1, end2):
         array.append(value)
         s = smoothstep(i, 0, 7, 1)
 
-        """
-    for i in range(8):
-        value = int((end2 * i/7) + (end1 * (7-i)/7))
-        array.append(value)
-        """
-
     return array
 
 def makeRow(end1, end2, row):
@@ -40,11 +32,6 @@ def makeRow(end1, end2, row):
         value = int((end2 * s) + (end1 * (1 - s)))
         square[row][i] = value
         s = smoothstep(i, 0, 7, 1)
-    """
-    for i in range(8):
-        value = int((end2 * i/7) + (end1 * (7 - i)/7))
-        square[row][i] = value
-    """
 
 nw = 111
 ne = 186
